@@ -16,8 +16,6 @@ int main()
     list<int> ls = {1, 2, 3, 6, 7, 8, 8};
     int my_var = 3;
     // Source - https://stackoverflow.com/a/24139474
-    // Posted by Matzi, modified by community. See post 'Timeline' for change history
-    // Retrieved 2026-02-05, License - CC BY-SA 3.0
     // how to find an element in list in c++
     bool found = (std::find(ls.begin(), ls.end(), my_var) != ls.end());
     cout << found << endl;
