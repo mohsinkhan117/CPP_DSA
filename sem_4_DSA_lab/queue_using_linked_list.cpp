@@ -71,3 +71,38 @@ bool size(Queue *q)
 {
     return q->count;
 }
+
+int main()
+{
+
+    Queue q;
+
+    createQueue(&q);
+    enqueue(&q, 10);
+    enqueue(&q, 20);
+
+    enqueue(&q, 30);
+
+    if (!isempty(&q))
+    {
+        cout << "Front element: " << front(&q) << endl;
+        cout << "Rear element: " << rear(&q) << endl;
+    }
+    dequeue(&q);
+    dequeue(&q);
+
+    if (!isempty(&q))
+    {
+        cout << "Front element after dequeue: " << front(&q) << endl;
+        cout << "Rear element after dequeue: " << rear(&q) << endl;
+    }
+
+    cout << "Queue size: " << size(&q) << endl;
+
+    dequeue(&q);
+
+    if (isempty(&q))
+    {
+        cout << "Queue is now empty." << endl;
+    }
+}
