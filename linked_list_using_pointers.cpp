@@ -9,7 +9,7 @@ struct Node
 
 Node *getNode(Node *head, int index)
 {
-    while (head && index--)
+    while (head && index--)   //The index-- first checks if the index is greater than zero and than decrements it, so we get the prevoius index, while (head != nullptr && index > 0)
     {
         head = head->next;
     }
@@ -34,7 +34,7 @@ void insertat(Node **head, int value, int pos)
     }
     else
     {
-        Node *pre = getNode(*head, pos - 1);
+        Node *pre = getNode(*head, pos - 1); // can I simply do like this  Node *pre = *head--;
 
         if (pre == nullptr)
         {
@@ -48,27 +48,6 @@ void insertat(Node **head, int value, int pos)
         cout << "Node added at position " << pos << endl;
     }
 }
-
-// void insertat(Node **head, int value , int pos )
-// {
-// if(pos == 0){
-// Node *newNode = creatNode(value);
-// newNode -> next = *head;//should not it be pointing to the nullptr??
-// *head =newNode;
-// }
-// else{
-//  Node *newNode = creatNode(value);
-
-// Node *pre = getNode(*head, pos-1);
-// if(pre == nullptr){
-//     cout << "Invalid position\n";
-//     return;
-// }
-// newNode -> next = pre-> next;
-// pre -> next = newNode;
-// cout<<"added the node at position"<<pre->next<<endl;
-// }
-// }
 
 void deleteAt(Node **head, int pos)
 {
@@ -144,4 +123,30 @@ void print(Node *head)
         nodeCount++;
     }
     cout << "Null";
+}
+int main()
+{
+    Node *head = nullptr;
+    insertat(&head, 10, 0);// will get before 0, so it will not be added, prevension from segmentation fault (pos-1)
+    insertat(&head, 20, 1);
+    insertat(&head, 30, 2);
+    insertat(&head, 40, 3);
+
+    cout << "List after insertions:\n";
+    print(head);
+    cout << endl;
+
+    search(head, 20);
+    search(head, 99);
+
+    cout << "Size of list: " << size(head) << endl;
+
+    deleteAt(&head, 0);
+    deleteAt(&head, 2);
+
+    cout << "List after deletions:\n";
+    print(head);
+    cout << endl;
+
+    cout << "Final size: " << size(head) << endl;
 }
