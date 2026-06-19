@@ -13,7 +13,7 @@ Kafka
 
 Amazon SQS
 
-📌 Used in:
+ Used in:
 
 Microservices
 
